@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>cart page</title>
+</head>
+<body>
+<ul th:replace="fragments/header :: navigation"></ul>
+
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>price</th>
+        <th>quantity</th>
+        <th>subtotal</th>
+        <th>remove</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${session.cart.cartItems}">
+        <td th:text="${item.product.id}"> </td>
+        <td th:text="${item.product.name}"> </td>
+        <td> <Rs class="span" th:text="$item.product.price"></Rs></td>
+        <td>
+            <form action="#" th:action="${/cart/update}" method="post"></form>
+            <input type="hidden" th:value="${item.product.id}" name="id">
+            <input type="number" min="1" th:value="${item.quantity}" name="qty">
+            <button type="submit"> update</button>
+        </td>
+
+        <td> <Rs class="span" th:text="$item.subTotal"></Rs></td>
+        <td>
+            <form action="#" th:action="${/cart/remove}" method="post"></form>
+            <button type="submit"> remove </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

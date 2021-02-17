@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Product page</title>
+</head>
+<body>
+<ul th:replace="fragments/header :: navigation"></ul>
+<form th:action="@{/cast/add}">
+    <table border="1">
+        <tbody>
+        <tr>
+            <th>ID</th>
+            <td>
+                <input type="hidden" value="${product.id}" name="id">
+                <span th:text="${product.id}"></span>
+            </td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td th:text="${product.name}"></td>
+        </tr>
+        <tr>
+            <th>Sku</th>
+            <td th:text="${product.sku}"></td>
+        </tr>
+        <tr>
+            <th>price</th>
+            <td>
+                <input type="number" min="1" value="1" name="qty">
+            </td>
+        </tr>
+        <tr>
+            <th>###</th>
+            <button type="submit">add to cart</button>
+        </tr>
+        </tbody>
+    </table>
+
+</form>
+</body>
+</html>
